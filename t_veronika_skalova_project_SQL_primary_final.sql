@@ -19,7 +19,6 @@ GROUP BY
 ORDER BY
 	price_year, category_code;
 
-
 -- View created to calculate the average payroll in Czechia by year to reduce row count; added WHERE conditions to filter out NULL values and unwanted value_type_code.
 CREATE VIEW czechia_payroll_avg_by_yr_v2 AS
 SELECT 
