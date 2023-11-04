@@ -26,8 +26,10 @@ WITH food_price_changes AS (
 SELECT 
 	food_code,
 	food_type,
-	(average_value - previous_year_value) / average_value * 100
+	MIN(ROUND((average_value - previous_year_value) / previous_year_value * 100, 2)) AS lowest_increase
 FROM 
 	food_price_changes
 GROUP BY
 	food_code, food_type
+ORDER BY
+	lowest_increase
