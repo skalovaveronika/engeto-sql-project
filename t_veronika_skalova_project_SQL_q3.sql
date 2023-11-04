@@ -1,4 +1,5 @@
--- Q3 Base querry - created to analyze food price trends by adding a 'previous_year_value' column.
+/* Q3 Base querry - created to analyze food price trends by adding a 'previous_year_value' column. 
+It is based on the 'average_value,' which represents the average yearly price across all food categories.*/
 SELECT 
 	price_year,
 	food_code,
@@ -10,7 +11,10 @@ FROM
 GROUP BY 
 	food_code, food_type, price_year;
 
--- Q3 in progress
+/* Q3: Final querry to identify the food category with the slowest price increase. 
+The 'lowest_increase' column is calculated as the minimum percentage increase in prices across all food categories.
+The result is grouped by food code and food type and ordered in ascending order to determine the lowest price increase.
+*/
 WITH food_price_changes AS (
 	SELECT 
 		price_year,
@@ -33,3 +37,4 @@ GROUP BY
 	food_code, food_type
 ORDER BY
 	lowest_increase
+LIMIT 1
