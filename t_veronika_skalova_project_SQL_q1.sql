@@ -1,12 +1,13 @@
-SELECT 
-	id, 
-	value, 
-	category_code,
-	YEAR(date_from) AS year_from,
-	YEAR(date_to) AS year_to,
-    region_code
+-- Q1 base querry
+SELECT
+	payroll_year,
+	industry_code,
+	industry_name,
+	average_salary,
+	LAG(average_salary) OVER (PARTITION BY industry_code ORDER BY payroll_year) AS previous_yr_avg_salary
 FROM 
-	czechia_price cp
-WHERE 
-	category_code IN ('114201', '111301')
-	AND YEAR(date_from) = YEAR(date_to);
+	primary_final_v4 pf
+GROUP BY 
+	payroll_year, industry_code
+ORDER BY 
+	industry_code, payroll_year; 
