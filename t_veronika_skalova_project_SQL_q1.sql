@@ -60,12 +60,12 @@ WITH salary_changes_q1 AS (
 SELECT
 	industry_code,
 	industry_name,
-	ROUND(SUM(average_salary - previous_yr_avg_salary) / SUM(previous_yr_avg_salary) * 100, 2) AS overall_salary_change_percentage
+	ROUND(SUM(average_salary - previous_yr_avg_salary) / SUM(previous_yr_avg_salary) * 100, 2) AS average_salary_change_percentage
 FROM 
 	salary_changes_q1
 GROUP BY 
 	industry_code, industry_name
 ORDER BY 
-	overall_salary_change_percentage ASC;
+	average_salary_change_percentage ASC;
 
 
