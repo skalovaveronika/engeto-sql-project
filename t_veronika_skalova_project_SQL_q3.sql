@@ -40,17 +40,3 @@ ORDER BY
 LIMIT 1;
 
 
--- Q3 AUX Querry for '117101' food code
-SELECT 
-    price_year,
-    food_code,
-    food_type,
-    average_value AS average_price
-FROM 
-    primary_final_v4
-WHERE 
-	food_code = 117101
-GROUP BY 
-    price_year, food_code, food_type
-ORDER BY 
-    price_year;
